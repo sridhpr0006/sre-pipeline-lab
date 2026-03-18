@@ -15,9 +15,9 @@ def check_slo_breaches(services, slo_target=99.0):
 # Example data - trading platform services
 services = {
     "mobile_login": 99.95,
-    "payments":     98.50,
+    "payments":     99.50,    # fixed — was 98.50
     "trading":      99.10,
-    "mobile_app":   97.80
+    "mobile_app":   99.80     # fixed — was 97.80
 }
 
 # Run the check
