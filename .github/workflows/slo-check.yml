@@ -1,0 +1,31 @@
+# Pipeline name
+name: SLO Availability Check
+
+# TRIGGER - when does this pipeline run?
+on:
+  push:
+    branches: [main]
+
+# JOBS - what does the pipeline do?
+jobs:
+  slo-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1 - Get the code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2 - Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      # Step 3 - Run SLO checker
+      - name: Run SLO breach check
+        run: python slo_checker.py
+
+      # Step 4 - Show completion
+      - name: Pipeline complete
+        run: echo "SLO check pipeline completed"
